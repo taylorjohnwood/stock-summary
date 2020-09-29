@@ -1,26 +1,32 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
+import { CssBaseline } from '@material-ui/core';
+
+// import About from './About/About';
+import NavBar from './Navagation/NavBar';
+import Search from './Search/Search';
+import GraphView from './GraphView/GraphView';
+
+const theme = createMuiTheme({
+	palette: {
+		primary: { main: '#8FBCBB', contrastText: '#ECEFF4' },
+		text: { primary: '#2E3440' },
+	},
+});
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+	const [ticker, setTicker] = useState('');
+
+	return (
+		<React.StrictMode>
+			<ThemeProvider theme={theme}>
+				<CssBaseline />
+				<NavBar />
+				<Search ticker={ticker} setTicker={setTicker} />
+				{ticker !== '' && <GraphView ticker={ticker} />}
+			</ThemeProvider>
+		</React.StrictMode>
+	);
 }
 
 export default App;
