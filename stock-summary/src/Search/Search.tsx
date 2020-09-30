@@ -65,7 +65,12 @@ const Search = ({ ticker, setTicker }: any) => {
 								onChange={onChange}
 							/>
 							{ticker !== '' && (
-								<IconButton onClick={() => setSearchText('')}>
+								<IconButton
+									onClick={() => {
+										setSearchText('');
+										setTicker('');
+									}}
+								>
 									<ClearIcon display='inline-block' />
 								</IconButton>
 							)}

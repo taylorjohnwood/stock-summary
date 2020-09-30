@@ -2,7 +2,8 @@ import React, { Fragment } from 'react';
 import { AppBar, IconButton, Toolbar, Typography } from '@material-ui/core';
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 
-import { InfoIcon, GitHub } from '@material-ui/icons';
+import InfoIcon from '@material-ui/icons/Info';
+import { GitHub, LinkedIn } from '@material-ui/icons';
 
 const useStyles = makeStyles((theme: Theme) =>
 	createStyles({
@@ -10,7 +11,7 @@ const useStyles = makeStyles((theme: Theme) =>
 			flexGrow: 1,
 		},
 		help_button: {
-			marginLeft: theme.spacing(3),
+			marginLeft: theme.spacing(0),
 		},
 		title: {
 			flexGrow: 1,
@@ -19,7 +20,7 @@ const useStyles = makeStyles((theme: Theme) =>
 	})
 );
 
-const NavBar = () => {
+const NavBar = ({ setShowPopup }: any) => {
 	const classes = useStyles();
 	return (
 		<Fragment>
@@ -28,17 +29,17 @@ const NavBar = () => {
 					<Typography variant='h6' className={classes.title}>
 						Stock Summary
 					</Typography>
-					<Typography>
-						Created by{' '}
-						<a href='https://www.linkedin.com/in/taylor-wood-developer/'>
-							Taylor Wood
-						</a>
-					</Typography>
-					<IconButton className={classes.help_button}>
-						<InfoIcon />
-					</IconButton>
 					<IconButton className={classes.help_button}>
 						<GitHub />
+					</IconButton>
+					<IconButton className={classes.help_button}>
+						<LinkedIn />
+					</IconButton>
+					<IconButton
+						className={classes.help_button}
+						onClick={() => setShowPopup(true)}
+					>
+						<InfoIcon />
 					</IconButton>
 				</Toolbar>
 			</AppBar>
